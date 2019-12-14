@@ -1,0 +1,58 @@
+<base href="https://cdn.rawgit.com/download/polymer-cdn/2.6.0/lib/">
+<script src="webcomponentsjs/webcomponents-loader.js"></script>
+<link rel="import" href="iron-ajax/iron-ajax.html">
+<link rel="import" href="polymer/polymer-element.html">
+
+<dom-module id="calcular-edad">
+  <template>
+    <style>
+      :host #contenedor span{
+        font-weight: bold;      
+      }
+      
+    </style>
+    <div id="contenedor">
+            <p>Hola <span>[[name]]</span> bienvenido, tu edad es:<span>[[edad]]</span> años</p>
+    </div>
+    
+  </template>
+  <script>
+      class PolymerElement extends Polymer.Element {
+    static get is() { return "calcular-edad"; }
+    static get properties() {
+      return {
+        name: {
+          type: String,
+          value: ""
+        },
+        edad:{
+          type: Number,
+          value: 20
+        }
+      };      
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        var nombre = prompt("¿Cual es tu Nombre?");
+        this.name = nombre;
+
+        do{
+          var year = parseInt(prompt("¿En que año naciste?"))
+          var edad = 2019-year;
+
+        }while(edad< 1 || edad >95)
+
+        this.edad = edad        
+        
+      }
+  }
+customElements.define(PolymerElement.is, PolymerElement);
+  </script>
+</dom-module>
+
+
+
+<h1>WEB COMPONENTS</h1>
+<hr>
+<calcular-edad>
+</calcular-edad>

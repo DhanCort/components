@@ -1,0 +1,41 @@
+
+<base href="https://cdn.rawgit.com/download/polymer-cdn/2.6.0/lib/">
+<script src="webcomponentsjs/webcomponents-loader.js"></script>
+<link rel="import" href="iron-ajax/iron-ajax.html">
+<link rel="import" href="polymer/polymer-element.html">
+
+
+
+<dom-module id="polymer-1">
+	<template>
+		<style>
+      :host #contenedor{
+        background-color: red;
+        color: white;
+      }
+			
+		</style>
+    <div id="contenedor">
+      <h2>Bienvenido: [[name]]</h2>
+    <p>Este es nuestro primer Componente</p>      
+    </div>
+		
+	</template>
+	<script>
+			class PolymerElement extends Polymer.Element {
+    static get is() { return "polymer-1"; }
+    static get properties() {
+      return {
+        name: {
+          type: String,
+          value:''
+        },
+      };      
+    }
+  }
+customElements.define(PolymerElement.is, PolymerElement);
+	</script>
+</dom-module>
+
+
+<polymer-1 name="Daniel"></polymer-1>
